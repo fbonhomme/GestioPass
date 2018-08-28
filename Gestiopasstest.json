@@ -1,0 +1,82 @@
+[{"idUser":"0",
+"LastName":"Bonhomme",
+"FistName":"Franck",
+"Email":"franck.bonhommegmail.com",
+"Groups":[
+    {
+        "idGroup":"01",
+        "groupName":"admin"
+    },
+    {
+        "idGroup":"02",
+        "groupName":"Network"
+    }
+],
+"CreatedUser":"01/10/2018"
+}
+,
+{
+    "idGroup":"01",
+    "groupName":"admin",
+    "grp_Description":"Groupe pour ceci",
+    "usersCount":2,
+    "nb_Comptes":3,
+    "Comptes":[
+       {"Name":"svcusr_test0",
+        "Password":"Sz3ECreee444dA&79Rd",
+        "Description":"compte de service NT"} ,
+        {"Name":"svcusr_test2",
+            "Password":"Sz3ECreee444dA&79Rd",
+            "Description":"compte de service NT"},
+        {"Name":"svcusr_test3",
+         "Password":"Sz3ECreee444dA&79Rd",
+         "Description":"compte de service NT"}
+    ],
+    "Users":[{
+        "idUser":"0",
+        "LastName":"Bonhomme",
+        "FistName":"Franck",
+        "Email":"franck.bonhommegmail.com",
+        "Created":"01/10/2018"
+    },
+    {
+        "idUser":"1",
+        "LastName":"Joy",
+        "FistName":"Francis",
+        "Email":"francis.joy.com",
+        "Created":"01/08/2017"
+    }]
+},
+{
+    "idGroup":"02",
+    "groupName":"Network",
+    "grp_Description":"Groupe pour ceci",
+    "usersCount":2,
+    "nb_Comptes":3,
+    "Comptes":[
+       {"Name":"svcusr_app0",
+        "Password":"Sz3ECreee444dA&79Rd",
+        "Description":"compte de service NT"} ,
+        {"Name":"svcusr_app2",
+            "Password":"Sz3ECreee444dA&79Rd",
+            "Description":"compte de service NT"},
+        {"Name":"svcusr_app3",
+         "Password":"Sz3ECreee444dA&79Rd",
+         "Description":"compte de service NT"}
+    ],
+    "Users":[{
+        "idUser":"0",
+        "LastName":"Bonhomme",
+        "FistName":"Franck",
+        "Email":"franck.bonhommegmail.com",
+        "Created":"01/10/2018"
+    },
+    {
+        "idUser":"1",
+        "LastName":"Joy",
+        "FistName":"Francis",
+        "Email":"francis.joy.com",
+        "Created":"01/08/2017"
+    }]
+}
+]
