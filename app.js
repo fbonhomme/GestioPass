@@ -17,8 +17,8 @@ app.use('/users', users);
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/',(req,res)=>{
+/*app.get('/',(req,res)=>{
     res.render('home')
-})
+})*/
 app.listen(3000,()=>{console.log('connected on port 3000')})
 
