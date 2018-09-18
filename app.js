@@ -5,8 +5,15 @@ const exphbs = require('express-handlebars');
 const morgan = require('morgan');
 const routes = require('./routes/index');
 const users = require('./routes/users');
+const mongoose = require('mongoose');
 
 const app = express();
+// Connect to Mongoose
+mongoose.connect('mongodb://localhost:27017/gestiopass',{useNewUrlParser:true})
+        .then(() => {console.log('MongoDB Connected ...')},
+        err => {console.log(err)}
+        );
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
