@@ -115,8 +115,6 @@ app.post('/login', (req, res, next) => {
                         next(error);
                     }
                 })
-
-
             };
         })
 })
