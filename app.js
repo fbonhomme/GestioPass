@@ -49,7 +49,6 @@ app.post('/users', (req, res) => {
     if (!req.body.email) {
         errors.push({ text: "Stop!!! email please !!!" });
     }
-
     if (errors.length > 0) {
         res.render('', {
             errors: errors,
@@ -89,7 +88,7 @@ app.post('/users', (req, res) => {
     }
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', (req, res, next) => {
 
     Joi.validate({
             email: req.body.email,
@@ -102,9 +101,22 @@ app.post('/login', (req, res) => {
                     status: err.details[0].message
                 });
             } else {
-                res.json({
-                    email: req.body
+                User.findOne({
+                    email: req.body.email
+                }).then(user => {
+                    if (user) {
+                        res.json({
+                            user: user.email,
+                            password: user.password
+                        })
+                    } else {
+                        const error = new Error('That username is not OG');
+                        res.status(409);
+                        next(error);
+                    }
                 })
+
+
             };
         })
 })
