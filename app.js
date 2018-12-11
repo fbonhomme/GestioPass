@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const favicon = require('serve-favicon');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
 const routes = require('./routes/index');
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use('/', routes);
 app.use('/users', users);
 
