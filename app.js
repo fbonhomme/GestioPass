@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const routes = require('./routes/index');
 const users = require('./routes/users');
 const mongoose = require('mongoose');
+//mongoose.set('useFindAndModify', false);
 const bcrypt = require('bcryptjs');
 
 const app = express();

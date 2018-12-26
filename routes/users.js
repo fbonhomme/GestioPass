@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+//mongoose.set('useFindAndModify', false);
 const Joi = require('joi');
 const bcrypt = require('bcryptjs');
 const {loginDataSchema,authDataSchema} = require('../Schema/joi');
@@ -39,12 +40,21 @@ router.post('/login', (req, res, next) => {
             } else {
                 User.findOne({
                     email: req.body.email
-                }).then(user => {
+                })
+                .then(user => {
                     if (user) {
-                        res.json({
-                            user: user.email,
-                            password: user.password
-                        })
+                        bcrypt
+                            .compare(req.body.password, user.password)
+                            .then((result) => {
+                                if(result) {
+                                    res.render('dashboard',{
+                                        id: user._id,
+                                        user: user.email,
+                                    });
+                                } else{
+                                    res.render('login',{status:'Unable to login'});
+                                }
+                            })
                     } else {
                         res.render('login',{status:'That username not exist'});
                     }
