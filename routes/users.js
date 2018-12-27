@@ -52,11 +52,11 @@ router.post('/login', (req, res, next) => {
                                         user: user.email,
                                     });
                                 } else{
-                                    res.render('login',{status:'Unable to login'});
+                                    res.render('login',{status:'Invalid password'});
                                 }
                             })
                     } else {
-                        res.render('login',{status:'That username not exist'});
+                        res.render('login',{status:'Unknown user'});
                     }
                 })
             };
