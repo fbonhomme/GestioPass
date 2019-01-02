@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const routes = require('./routes/index');
 const users = require('./routes/users');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const flash = require('connect-flash');
 //mongoose.set('useFindAndModify', false);
 const bcrypt = require('bcryptjs');
 
@@ -27,6 +29,28 @@ app.use('/users', users);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+// Express session
+app.use(
+    session({
+      secret: 'secret',
+      resave: true,
+      saveUninitialized: true
+    })
+  );
+  
+// Connect flash
+app.use(flash());
+
+// Global variables
+app.use(function(req, res, next) {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+  });
+
+
 
 
 
