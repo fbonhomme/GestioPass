@@ -4,28 +4,30 @@ const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
-const routes = require('./routes/index');
-const users = require('./routes/users');
 const mongoose = require('mongoose');
-const session = require('express-session');
+const index = require('./routes/index');
+const users = require('./routes/users');
 const flash = require('connect-flash');
-//mongoose.set('useFindAndModify', false);
-const bcrypt = require('bcryptjs');
+const session = require('express-session');
+
+//const passport = require('passport');
 
 const app = express();
+
+// Passport Config
+//require('./config/passport')(passport);
 
 // Connect to Mongoose
 mongoose.connect('mongodb://localhost:27017/gestiopass', { useNewUrlParser: true })
     .then(() => console.log('MongoDB Connected ...'))
     .catch(err => console.log(err))
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.use('/', routes);
-app.use('/users', users);
+
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -35,12 +37,17 @@ app.use(
     session({
       secret: 'secret',
       resave: true,
-      saveUninitialized: true
+      saveUninitialized: false
     })
   );
+
+// Passport middleware
+//app.use(passport.initialize());
+//app.use(passport.session());
   
 // Connect flash
 app.use(flash());
+
 
 // Global variables
 app.use(function(req, res, next) {
@@ -50,8 +57,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-
-
-
+app.use('/', index);
+app.use('/users', users);
 
 app.listen(3000, () => { console.log('connected on port 3000') })

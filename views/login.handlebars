@@ -1,7 +1,5 @@
 <body class="text-center">
-    {{#if status}}
-      <p class="alert alert-danger">{{msg}}</p>
-      {{/if}}
+    {{> _messages}}
      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
      <form class="form-signin" action="/users/login" method="POST" >
       <label for="inputEmail" class="sr-only">Email address</label>
