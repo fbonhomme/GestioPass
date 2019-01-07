@@ -9,13 +9,12 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const flash = require('connect-flash');
 const session = require('express-session');
-
-//const passport = require('passport');
+const passport = require('passport');
 
 const app = express();
 
 // Passport Config
-//require('./config/passport')(passport);
+require('./config/passport')(passport);
 
 // Connect to Mongoose
 mongoose.connect('mongodb://localhost:27017/gestiopass', { useNewUrlParser: true })
@@ -42,8 +41,8 @@ app.use(
   );
 
 // Passport middleware
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
   
 // Connect flash
 app.use(flash());

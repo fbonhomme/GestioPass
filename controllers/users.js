@@ -77,7 +77,7 @@ exports.register = (req, res) => {
         }
     };
 
-    exports.login =  (req, res) => {
+   /* exports.login =  (req, res) => {
         Joi.validate({
                 email: req.body.email,
                 password: req.body.password
@@ -110,4 +110,4 @@ exports.register = (req, res) => {
                     })
                 };
             })
-    }
+    } */
