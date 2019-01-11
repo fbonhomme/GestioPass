@@ -1,3 +1,22 @@
+
 {{#if success_msg }}
-      <p class="alert alert-success alert-dismissible fade show">{{success_msg}}</p>
+      <p class="alert alert-success alert-dismissible fade show">{{success_msg}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">&times</span>
+          </button>
+      </p>
+{{/if}}
+{{#if error_msg }}
+      <p class="alert alert-success alert-dismissible fade show">{{error_msg}}
+           <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">&times</span>
+          </button>
+      </p>
+{{/if}}
+{{#if error }}
+      <p class="alert alert-success alert-dismissible fade show">{{error}}
+           <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">&times</span>
+          </button>
+      </p>
 {{/if}}

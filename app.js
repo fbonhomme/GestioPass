@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const index = require('./routes/index');
 const users = require('./routes/users');
-const flash = require('connect-flash');
+flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
@@ -26,7 +26,6 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -47,9 +46,8 @@ app.use(passport.session());
 // Connect flash
 app.use(flash());
 
-
 // Global variables
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
