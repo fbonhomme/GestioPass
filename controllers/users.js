@@ -3,10 +3,10 @@ const passport = require('passport');
 const User = require('../models/user');
 
 exports.get_register = (req,res)=>{
-    res.render('register',{etat:false});
+    res.render('register',{etat:true});
 };
 exports.get_login = (req, res)=>{
-    res.render('login',{etat:false});
+    res.render('login',{etat:true});
 };
 
 exports.get_logout =  (req, res) => {
